@@ -13,6 +13,7 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('plugins/OwlCarousel2-2.2.1/animate.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('styles/main_styles.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('styles/responsive.css') }}">
+<meta name="csrf-token" content="{{ csrf_token() }}">
 @yield('custom_css')
 </head>
 <body>
@@ -216,6 +217,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <script src="{{ asset('plugins/easing/easing.js') }}"></script>
 <script src="{{ asset('plugins/parallax-js-master/parallax.min.js') }}"></script>
 <script src="{{ asset('js/custom.js') }}"></script>
+<script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
 @yield('custom_js')
 </body>
 </html>
