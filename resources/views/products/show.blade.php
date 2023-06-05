@@ -65,7 +65,7 @@
             <!-- Product Content -->
             <div class="col-lg-6">
                 <div class="details_content">
-                    <div class="details_name">Smart Phone</div>
+                    <div class="details_name">{{ $product->title }}</div>
                     @if ($product->new_price != null)
                         <div class="details_discount">${{ $product->price }}</div>
                         <div class="details_price">${{ $product->new_price }}</div>
