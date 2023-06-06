@@ -36,7 +36,7 @@
 										<ul>
 											<li><a href="categories.html">Categories</a></li>
 											<li><a href="product.html">Product</a></li>
-											<li><a href="cart.html">Cart</a></li>
+											<li><a href="{{ route('cartIndex') }}">Cart</a></li>
 											<li><a href="checkout.html">Check out</a></li>
 											<li><a href="contact.html">Contact</a></li>
 										</ul>
@@ -67,7 +67,7 @@
 													c0,7.5,6,13.5,13.5,13.5s13.5-6,13.5-13.5v-41h45.2l26.9,302.3C412.8,445.2,392.1,462,366.8,462z"/>
 											</g>
 										</svg>
-										<div>Cart <span>(0)</span></div>
+										<div>Cart (<span class="cart-qty">{{\Cart::session($_COOKIE['cart_id'])->getTotalQuantity()}}</span>)</div>
 									</a>
 								</div>
 								<div class="search">

@@ -1,6 +1,8 @@
 @extends('layouts.main')
 
 @section('title', 'Home')
+
+@section('content')
 <!-- Home -->
 
 <div class="home">
@@ -65,7 +67,7 @@
             <!-- Product Content -->
             <div class="col-lg-6">
                 <div class="details_content">
-                    <div class="details_name">{{ $product->title }}</div>
+                    <div class="details_name" data-id="{{$product->id}}">{{ $product->title }}</div>
                     @if ($product->new_price != null)
                         <div class="details_discount">${{ $product->price }}</div>
                         <div class="details_price">${{ $product->new_price }}</div>
@@ -188,12 +190,44 @@
 </div>
 
 @include('partials._newsletter')
-@section('content')
+
 
 @endsection
 
 @section('custom_js')
     <script src="{{asset('js/product.js')}}"></script>
+    <script>
+        $(document).ready(function () {
+            $('.cart_button').click(function (event) {
+                event.preventDefault();
+                addToCart();
+            });
+        });
+
+        function addToCart() {
+            let id = $('.details_name').data('id');
+            let qty = parseInt($('#quantity_input').val());
+
+            let total_qty = parseInt($('.cart-qty').text());
+            total_qty += qty;
+            $('.cart-qty').text(total_qty);
+
+            $.ajax({
+                url: '{{ route('addToCart') }}',
+                type: "POST",
+                data: {
+                    id: id,
+                    qty: qty
+                },
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: (data) => {
+
+                }
+            });
+        }
+    </script>
 @endsection
 
 @section('custom_css')
